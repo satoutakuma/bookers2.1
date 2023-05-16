@@ -1,0 +1,23 @@
+<h1>Book detail books show</h1>
+<table>
+ <tbody>
+  <td>
+   <%= image_tag @book.user.get_profile_image(100,100) %>
+   
+  </td>
+  <td>
+   <%=@book.title%>
+  </td>
+  <td><%=@book.body%></td>
+  <td>
+   <% if @book.user == current_user %>
+    <%= link_to "edit", edit_book_path(@book.id) %>
+   <% end %>
+  </td>
+  <td>
+   <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+   <% end %>
+  </td>
+ </tbody>
+</table>
