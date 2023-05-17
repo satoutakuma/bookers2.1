@@ -1,28 +1,5 @@
-<h1>User info</h1>
- <table class="teble">
-	 <thead>
-		 <tr>
-		  <th class="header1"><%= image_tag @user.get_profile_image(100,100) %></th>
-			 <th class="header2"></th>
-		 </tr>
-	 </thead>
-   <tbody>
- 	   <tr>
- 	    <th>name</th>
- 	    <th><%= @user.name %></th>
- 	   </tr>
- 	   <tr>
- 	   	<th>introduction</th>
- 	    <th><%= @user.introduction %></th>
- 	   </tr>
-  </tbody>
-</table>
-<p>
-  <%= link_to "edit", edit_user_path(@user.id) %>
-</p>
- 
+<%= render 'list', user: @user %>
 
- 
 <h1>New book</h1>
  <%= form_with model: @book do |f| %>
   <h4>Title</h4>
@@ -33,7 +10,7 @@
  <% end %>
 
 <h1>Books books index</h1>
- <table class="teble">
+ <table class="table table-striped">
 	 <thead>
 		 <tr>
 		  <th class="header1"></th>
