@@ -1,3 +1,26 @@
+<h1>User info</h1>
+ <table class="teble">
+	 <thead>
+		 <tr>
+		  <th class="header1"><%= image_tag @user.get_profile_image(100,100) %></th>
+			 <th class="header2"></th>
+		 </tr>
+	 </thead>
+   <tbody>
+ 	   <tr>
+ 	    <th>name</th>
+ 	    <th><%= @user.name %></th>
+ 	   </tr>
+ 	   <tr>
+ 	   	<th>introduction</th>
+ 	    <th><%= @user.introduction %></th>
+ 	   </tr>
+  </tbody>
+</table>
+<p>
+  <%= link_to "edit", edit_user_path(@user.id) %>
+</p>
+
 <h1>Books users show</h1>
  <table class="teble">
   <thead>
