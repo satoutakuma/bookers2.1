@@ -1,46 +1,28 @@
-<h1>User info</h1>
- <table class="teble">
-	 <thead>
-		 <tr>
-		  <th class="header1"><%= image_tag @users.get_profile_image(100,100) %></th>
-			 <th class="header2"></th>
-		 </tr>
-	 </thead>
+<%= render 'list', user: @users, book: @new %>
+<div class="col-md-8 offset-md-1">
+ <h2>Book detail books show</h2>
+  <table class="table table-striped">
    <tbody>
- 	   <tr>
- 	    <th>name</th>
- 	    <th><%= @users.name %></th>
- 	   </tr>
- 	   <tr>
- 	   	<th>introduction</th>
- 	    <th><%= @users.introduction %></th>
- 	   </tr>
-  </tbody>
-</table>
-<p>
-  <%= link_to "edit", edit_user_path(@users.id) %>
-</p>
-
-<h1>Book detail books show</h1>
-<table>
- <tbody>
-  <td>
-   <%= image_tag @book.user.get_profile_image(100,100) %>
-   
-  </td>
-  <td>
-   <%=@book.title%>
-  </td>
-  <td><%=@book.body%></td>
-  <td>
-   <% if @book.user == current_user %>
-    <%= link_to "edit", edit_book_path(@book.id) %>
-   <% end %>
-  </td>
-  <td>
-   <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-   <% end %>
-  </td>
- </tbody>
-</table>
+    <td>
+     <%= image_tag @book.user.get_profile_image(100,100) %><br>
+     <%= link_to user_path(@users) do %>
+       <%= @users.name %>
+     <% end %>
+    </td>
+    <td>
+     <%=@book.title%>
+    </td>
+    <td><%=@book.body%></td>
+    <td>
+     <% if @book.user == current_user %>
+      <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %>
+     <% end %>
+    </td>
+    <td>
+     <% if @book.user == current_user %>
+      <%= link_to "Destroy", book_path(@book.id), class: "btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %>
+     <% end %>
+    </td>
+   </tbody>
+  </table>
+</div>

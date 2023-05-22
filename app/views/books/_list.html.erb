@@ -1,25 +1,36 @@
 
-<div>
-  <h1>User info</h1>
-   <table class="teble">
-  	 <thead>
-  		 <tr>
-  		  <th class="header1"><%= image_tag user.get_profile_image(100,100) %></th>
-  			 <th class="header2"></th>
-  		 </tr>
-  	 </thead>
-     <tbody>
-   	   <tr>
-   	    <th>name</th>
-   	    <th><%= user.name %></th>
-   	   </tr>
-   	   <tr>
-   	   	<th>introduction</th>
-   	    <th><%= user.introduction %></th>
-   	   </tr>
-    </tbody>
-  </table>
-  <p>
-    <%= link_to "edit", edit_user_path(user.id) %>
-  </p>
-</div>
+<%= flash[:notice] %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-3">
+    <h2>User info</h2>
+    <%= image_tag user.get_profile_image(100,100) %>
+    <table class="table table-striped">
+     <thead>
+      <tr>
+   		  <th class="header1">name</th>
+   			 <th class="header2"><%= user.name %></th>
+   		 </tr>
+   	 </thead>
+   	 <tbody>
+    	   <tr>
+    	   	<th>introduction</th>
+    	    <th><%= user.introduction %></th>
+    	   </tr>
+     </tbody>
+   </table>
+   <p>
+     <%= link_to edit_user_path(user.id) do %>
+       <button type="button" class="btn btn-light btn-block"><i class="fas fa-user-cog"></i></button>
+     <% end %>
+   </p>
+   <h1>New book</h1>
+     <%= form_with model: book, url: books_path do |f| %>
+   <label for="book_title">Title</label><br>
+     <%= f.text_field :title %><br>
+   <label for="book_opinion">Opinion</label><br>
+     <%= f.text_area :body %>
+     <%= f.submit 'Create Book', class: "btn btn-success" %>
+     <% end %>
+   </div>
+
